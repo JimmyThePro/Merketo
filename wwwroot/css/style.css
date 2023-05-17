@@ -391,8 +391,9 @@ header .menu-icons {
   left: 0;
   right: 0;
   padding: 20px;
-  background-color: #292929;
+  background-color: #636363;
   color: #FFFFFF;
+  z-index: 1;
 }
 @media (min-width: 1200px) {
   header .menu-icons {
@@ -448,6 +449,12 @@ footer .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+}
+@media (min-width: 992px) {
+  footer .container {
+    font-size: 16px;
+  }
 }
 
 .breadcrumb {
