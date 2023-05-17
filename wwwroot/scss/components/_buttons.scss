@@ -59,6 +59,8 @@
     border: 1px solid $color-theme-1;
     background-color: $color-theme-1;
     color: $color-white;
+    cursor: pointer;
+    text-decoration: none;
     transition: all 0.25s ease-in-out;
 
     &:hover {

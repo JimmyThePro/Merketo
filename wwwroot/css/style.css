@@ -76,6 +76,8 @@ html, body {
   border: 1px solid #FA3150;
   background-color: #FA3150;
   color: #FFFFFF;
+  cursor: pointer;
+  text-decoration: none;
   transition: all 0.25s ease-in-out;
 }
 .btn-theme:hover {
@@ -390,7 +392,7 @@ header .menu-icons {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px;
+  padding: 2vh;
   background-color: #636363;
   color: #FFFFFF;
   z-index: 1;
@@ -444,16 +446,22 @@ footer {
   padding: 30px;
   background-color: #292929;
   color: #AEAEAE;
+  margin-bottom: 7vh;
+}
+@media (min-width: 992px) {
+  footer {
+    margin-bottom: 0;
+  }
 }
 footer .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
 }
 @media (min-width: 992px) {
   footer .container {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
