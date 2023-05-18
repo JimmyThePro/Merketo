@@ -286,6 +286,33 @@ input:not([type=checkbox]):focus {
   align-items: center;
 }
 
+.custom-upload {
+  border: 1px solid #E1E1E1;
+  background-color: #FAFAFA;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px;
+  outline: 0;
+  cursor: pointer;
+}
+.custom-upload:focus {
+  border: 1px solid #AEAEAE;
+}
+.custom-upload .btn-theme {
+  font-size: 14px;
+  padding: 8px 18px;
+  cursor: pointer;
+}
+.custom-upload .custom-upload-name {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.custom-upload-input {
+  display: none !important;
+}
+
 header {
   position: fixed;
   width: 100%;

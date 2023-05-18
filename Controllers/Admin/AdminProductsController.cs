@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Merketo.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Merketo.Controllers.Admin;
 
@@ -10,8 +11,16 @@ public class AdminProductsController : Controller
         return View();
     }
 
+    [HttpGet]
     [Route("/admin/products/create")]
     public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [Route("/admin/products/create")]
+    public IActionResult Create(AdminProductsCreateViewModel viewModel)
     {
         return View();
     }

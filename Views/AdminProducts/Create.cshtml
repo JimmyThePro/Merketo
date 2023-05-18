@@ -1,1 +1,41 @@
-﻿<div>Create new product</div>
+﻿@model AdminProductsCreateViewModel
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <form class="col-10 col-xl-6 my-5" method="post" enctype="multipart/form-data" novalidate>
+            <h3 class="mt-5 text-center bg-secondary text-white p-2">Create a new product</h3>
+            <div class="mb-3 mt-5">
+                <label asp-for="ArticleNumber" class="form-label"></label>
+                <input asp-for="ArticleNumber" onkeyup="validateRequired(event)" autocomplete="none" />
+                <small><span asp-validation-for="ArticleNumber" class="text-danger"></span></small>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" onkeyup="validateRequired(event)" autocomplete="none" />
+                <small><span asp-validation-for="Name" class="text-danger"></span></small>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" value="0" onkeyup="validateRequired(event)" autocomplete="none" />
+                <small><span asp-validation-for="Price" class="text-danger"></span></small>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" rows="5" onkeyup="validateRequired(event)" autocomplete="none"></textarea>
+                <small><span asp-validation-for="Description" class="text-danger"></span></small>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Image" class="form-label"></label>
+                <label class="custom-upload">
+                    <div class="btn-theme">Choose file...</div>
+                    <input asp-for="Image" class="custom-upload-input" onchange="getFileName(event)" />
+                    <label asp-for="Image" id="fileName" class="custom-upload-name">No file selected</label>
+                </label>
+                <small><span asp-validation-for="Image" class="text-danger"></span></small>
+            </div>
+            <div class="d-grid mt-5">
+                <button class="btn-theme">CREATE PRODUCT</button>
+            </div>
+        </form>
+    </div>
+</div>
