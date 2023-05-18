@@ -1,14 +1,16 @@
+using Merketo.Models.ViewModels;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Services
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<HomeViewModel>();
 
-// Contexts
-
-// Identity
+// Identities
 
 // Repositories
 
-// Services
+// Contexts
 
 var app = builder.Build();
 app.UseHsts();
