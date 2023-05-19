@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Merketo.Models.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Merketo.Models.ViewModels;
 
@@ -23,4 +24,16 @@ public class AdminProductsCreateViewModel
 
     [Display(Name = "Productimage")]
     public IFormFile? Image { get; set; }
+
+    public static implicit operator ProductEntity(AdminProductsCreateViewModel model)
+    {
+        return new ProductEntity
+        {
+            ArticleNumber = model.ArticleNumber,
+            Name = model.Name,
+            Description = model.Description,
+            Price = model.Price,
+            ImageName = model.Image?.FileName
+        };
+    }
 }
