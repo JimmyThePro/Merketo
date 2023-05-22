@@ -1,0 +1,36 @@
+﻿@model AdminProductsCreateViewModel
+
+@{
+    ViewData["Title"] = "Update/Edit a product";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <form class="col-10 col-xl-6 my-5" method="post" enctype="multipart/form-data" novalidate asp-controller="AdminProducts" asp-action="Edit">
+            <h3 class="mt-5 text-center bg-secondary text-white shadow p-2">Update/Edit product</h3>
+            <div class="mb-3 mt-5">
+                <label asp-for="ArticleNumber" class="form-label"></label>
+                <input asp-for="ArticleNumber" onkeyup="validateRequired(event)" autocomplete="none" />
+                <small><span asp-validation-for="ArticleNumber" class="text-danger"></span></small>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" onkeyup="validateRequired(event)" autocomplete="none" />
+                <small><span asp-validation-for="Name" class="text-danger"></span></small>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" value="0" onkeyup="validateRequired(event)" autocomplete="none" />
+                <small><span asp-validation-for="Price" class="text-danger"></span></small>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" rows="5" onkeyup="validateRequired(event)" autocomplete="none"></textarea>
+                <small><span asp-validation-for="Description" class="text-danger"></span></small>
+            </div>
+            <div class="d-grid mt-5">
+                <button type="submit" class="btn-theme">UPDATE PRODUCT</button>
+            </div>
+        </form>
+    </div>
+</div>

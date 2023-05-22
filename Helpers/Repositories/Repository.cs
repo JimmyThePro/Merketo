@@ -30,4 +30,26 @@ public class Repository<TEntity> where TEntity : class
     {
         return await _context.Set<TEntity>().ToListAsync();
     }
+
+    public virtual async Task<TEntity> UpdateAsync(TEntity entity)
+    {
+
+        _context.Entry(entity).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+
+        return entity!;
+    }
+
+    public async Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+        if (entity != null)
+        {
+            _context.Set<TEntity>().Remove(entity);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        return false;
+    }
 }

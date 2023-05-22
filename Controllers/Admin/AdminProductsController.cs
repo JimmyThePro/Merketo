@@ -43,4 +43,45 @@ public class AdminProductsController : Controller
 
         return View(viewModel);
     }
+
+    [HttpGet]
+    [Route("/admin/products/edit/{id}")]
+    public async Task<IActionResult> Edit(string id)
+    {
+        var entity = await _productRepository.GetAsync(x => x.ArticleNumber == id);
+        if (entity != null)
+        {
+            var viewModel = new AdminProductsCreateViewModel
+            {
+                ArticleNumber = entity.ArticleNumber,
+                Name = entity.Name,
+                Price = entity.Price,
+                Description = entity.Description,
+            };
+            return View(viewModel);
+        }
+
+        return RedirectToAction("Index", "AdminProducts");
+    }
+
+    [HttpPost]
+    [Route("/admin/products/edit/{id}")]
+    public async Task<IActionResult> Edit(string id, AdminProductsCreateViewModel viewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            var entity = await _productRepository.GetAsync(x => x.ArticleNumber == id);
+            if (entity != null)
+            {
+                entity.Name = viewModel.Name;
+                entity.Price = viewModel.Price;
+                entity.Description = viewModel.Description;
+                await _productRepository.UpdateAsync(entity);
+
+                return RedirectToAction("Index", "AdminProducts");
+            }
+        }
+
+        return View(viewModel);
+    }
 }
