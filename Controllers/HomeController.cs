@@ -1,4 +1,5 @@
-﻿using Merketo.Models.ViewModels;
+﻿using Merketo.Helpers.Repositories;
+using Merketo.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Merketo.Controllers;
@@ -6,20 +7,16 @@ namespace Merketo.Controllers;
 public class HomeController : Controller
 {
     private readonly HomeViewModel _homeViewModel;
+    private readonly ProductRepository _productRepository;
 
-    public HomeController(HomeViewModel homeViewModel)
+    public HomeController(ProductRepository productRepository)
     {
-        _homeViewModel = homeViewModel;
+        _productRepository = productRepository;
     }
 
     public async Task<IActionResult> Index()
     {
-        return View(_homeViewModel);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Index(HomeViewModel homeViewModel)
-    {
-        return View();
+        var products = await _productRepository.GetAllAsync();
+        return View(products);
     }
 }
