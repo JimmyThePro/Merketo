@@ -40,7 +40,6 @@ public class AdminProductsController : Controller
             if (_entity != null)
                 return RedirectToAction("Index", "AdminProducts");
         }
-
         return View(viewModel);
     }
 
@@ -60,7 +59,6 @@ public class AdminProductsController : Controller
             };
             return View(viewModel);
         }
-
         return RedirectToAction("Index", "AdminProducts");
     }
 
@@ -77,11 +75,21 @@ public class AdminProductsController : Controller
                 entity.Price = viewModel.Price;
                 entity.Description = viewModel.Description;
                 await _productRepository.UpdateAsync(entity);
-
                 return RedirectToAction("Index", "AdminProducts");
             }
         }
-
         return View(viewModel);
+    }
+
+    [HttpGet]
+    [Route("/admin/products/delete/{id}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var isDeleted = await _productRepository.DeleteAsync(x => x.ArticleNumber == id);
+        if (isDeleted)
+        {
+            return RedirectToAction("Index", "AdminProducts");
+        }
+        return RedirectToAction("Index", "AdminProducts");
     }
 }

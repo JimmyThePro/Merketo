@@ -49,7 +49,6 @@ public class Repository<TEntity> where TEntity : class
             await _context.SaveChangesAsync();
             return true;
         }
-
         return false;
     }
 }
