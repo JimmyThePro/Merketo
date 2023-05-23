@@ -33,7 +33,7 @@ public class AdminProductsCreateViewModel
             Name = model.Name,
             Description = model.Description,
             Price = model.Price,
-            ImageName = model.Image?.FileName
+            ImageName = model.Image?.FileName,
         };
     }
 }

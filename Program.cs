@@ -6,18 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Services
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<HomeViewModel>();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<ProductService>();
-
-// Identities
-
-// Repositories
-
-// Contexts
 
 var app = builder.Build();
 app.UseHsts();

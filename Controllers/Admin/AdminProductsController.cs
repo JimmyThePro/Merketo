@@ -1,12 +1,17 @@
-﻿using Merketo.Helpers.Repositories;
+﻿using Merketo.Contexts;
+using Merketo.Helpers.Repositories;
 using Merketo.Helpers.Services;
 using Merketo.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Merketo.Controllers.Admin;
 
 public class AdminProductsController : Controller
 {
+    #region constructors & private fields
+
     private readonly ProductService _productService;
     private readonly ProductRepository _productRepository;
 
@@ -15,6 +20,8 @@ public class AdminProductsController : Controller
         _productService = productService;
         _productRepository = productRepository;
     }
+
+    #endregion
 
     [HttpGet]
     [Route("/admin/products")]
@@ -25,7 +32,7 @@ public class AdminProductsController : Controller
 
     [HttpGet]
     [Route("/admin/products/create")]
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
         return View();
     }

@@ -1,13 +1,14 @@
 ﻿using Merketo.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Merketo.Contexts;
-
-public class DataContext : DbContext
+namespace Merketo.Contexts
 {
-    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    public class DataContext : DbContext
     {
-    }
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+        }
 
-    public DbSet<ProductEntity> Products { get; set; }
+        public DbSet<ProductEntity> Products { get; set; }
+    }
 }

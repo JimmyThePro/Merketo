@@ -1,12 +1,10 @@
 ﻿using Merketo.Helpers.Repositories;
-using Merketo.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Merketo.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly HomeViewModel _homeViewModel;
     private readonly ProductRepository _productRepository;
 
     public HomeController(ProductRepository productRepository)

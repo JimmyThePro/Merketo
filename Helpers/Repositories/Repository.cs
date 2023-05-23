@@ -1,54 +1,58 @@
 ﻿using Merketo.Contexts;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
-namespace Merketo.Helpers.Repositories;
-
-public class Repository<TEntity> where TEntity : class
+namespace Merketo.Helpers.Repositories
 {
-    private readonly DataContext _context;
-
-    public Repository(DataContext context)
+    public class Repository<TEntity> where TEntity : class
     {
-        _context = context;
-    }
+        private readonly DataContext _context;
 
-    public async Task<TEntity> CreateAsync(TEntity entity)
-    {
-        _context.Set<TEntity>().Add(entity);
-        await _context.SaveChangesAsync();
-        return entity;
-    }
-
-    public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate)
-    {
-        var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
-        return entity!;
-    }
-
-    public async Task<IEnumerable<TEntity>> GetAllAsync()
-    {
-        return await _context.Set<TEntity>().ToListAsync();
-    }
-
-    public virtual async Task<TEntity> UpdateAsync(TEntity entity)
-    {
-
-        _context.Entry(entity).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
-
-        return entity!;
-    }
-
-    public async Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate)
-    {
-        var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
-        if (entity != null)
+        public Repository(DataContext context)
         {
-            _context.Set<TEntity>().Remove(entity);
-            await _context.SaveChangesAsync();
-            return true;
+            _context = context;
         }
-        return false;
+
+        public async Task<List<TEntity>> GetAllAsync()
+        {
+            return await _context.Set<TEntity>().ToListAsync();
+        }
+
+        public async Task<TEntity> CreateAsync(TEntity entity)
+        {
+            _context.Set<TEntity>().Add(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+            return entity!;
+        }
+
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return entity!;
+        }
+
+        public async Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+            if (entity != null)
+            {
+                _context.Set<TEntity>().Remove(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
     }
 }

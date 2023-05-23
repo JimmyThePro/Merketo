@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Merketo.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230519083140_Products added")]
+    [Migration("20230523085908_Products added")]
     partial class Productsadded
     {
         /// <inheritdoc />
