@@ -17,7 +17,7 @@
         <div class="collection-grid d-flex align-items-end justify-content-center row">
             @foreach (var product in Model)
             {
-                <a href="#" class="collection-item col-3 mb-4">
+                <a href="products/details/@product.ArticleNumber" class="collection-item col-3 mb-4">
                     <img src="~/images/placeholders/@product.ImageName" alt="@product.ImageName">
                     <div class="body">
                         <div class="title">@product.Name</div>

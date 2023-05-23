@@ -14,4 +14,6 @@ public class ProductEntity
     [Column(TypeName = "money")]
     public decimal Price { get; set; }
     public string? ImageName { get; set; }
+
+    public ICollection<ProductTagEntity> Tags { get; set; } = new HashSet<ProductTagEntity>();
 }
