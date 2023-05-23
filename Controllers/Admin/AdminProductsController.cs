@@ -32,7 +32,7 @@ public class AdminProductsController : Controller
 
     [HttpGet]
     [Route("/admin/products/create")]
-    public async Task<IActionResult> Create()
+    public IActionResult Create()
     {
         return View();
     }
