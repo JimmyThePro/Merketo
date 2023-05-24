@@ -13,6 +13,7 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configura
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<SeedService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 {
@@ -21,7 +22,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
     x.User.RequireUniqueEmail = false;
 
 })
-    .AddEntityFrameworkStores<IdentityContext>();
+    .AddEntityFrameworkStores<IdentityContext>()
+    .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
 
 var app = builder.Build();
 app.UseHsts();

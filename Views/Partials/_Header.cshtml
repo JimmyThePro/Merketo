@@ -8,7 +8,25 @@
         </nav>
         <nav class="menu-icons">
             <a class="link" asp-controller="Home" asp-action="Index"><i class="fa-regular fa-search"></i></a>
-            <a class="link" asp-controller="Home" asp-action="Index">Login</a>
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("admin"))
+            {
+                <a asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>
+            }
+            @if (signInManager.IsSignedIn(User))
+            {
+                <div class="d-flex">
+                    <a class="link" asp-controller="Account" asp-action="Index">@User.Identity?.Name</a>
+                    <a class="link" asp-controller="Account" asp-action="Index">@(User.FindFirst("DisplayName")?.Value)</a>
+                    <a class="link" asp-controller="Account" asp-action="SignOut">SignOut</a>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex">
+                    <a class="link text-nowrap" asp-controller="Account" asp-action="SignIn">Sign In</a>
+                    <a class="link text-nowrap" asp-controller="Account" asp-action="SignUp">Sign Up</a>
+                </div>
+            }
             <a class="link" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-cart-shopping"></i></a>
         </nav>
         <div class="toggle">

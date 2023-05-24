@@ -57,4 +57,13 @@ public class AccountController : Controller
     {
         return View();
     }
+
+    [Authorize]
+    public new async Task<IActionResult> SignOut()
+    {
+        if (await _authService.SignOutAsync(User))
+            return LocalRedirect("/");
+
+        return RedirectToAction("Index");
+    }
 }
