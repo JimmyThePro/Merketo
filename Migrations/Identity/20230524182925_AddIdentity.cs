@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Merketo.Migrations.Identity
 {
     /// <inheritdoc />
-    public partial class IdentityAdded : Migration
+    public partial class AddIdentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -1,4 +1,5 @@
 using Merketo.Contexts;
+using Merketo.Factories;
 using Merketo.Helpers.Repositories;
 using Merketo.Helpers.Services;
 using Merketo.Models.ViewModels;
@@ -10,11 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<HomeViewModel>();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
-builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
+builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")), optionsLifetime: ServiceLifetime.Singleton);
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<SeedService>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;

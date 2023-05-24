@@ -11,9 +11,9 @@ public class AuthService
 {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IdentityContext _identityContext;
     private readonly SeedService _seedService;
-    private readonly RoleManager<IdentityRole> _roleManager;
 
     public AuthService(UserManager<IdentityUser> userManager, IdentityContext identityContext, SignInManager<IdentityUser> signInManager, SeedService seedService, RoleManager<IdentityRole> roleManager)
     {
@@ -59,7 +59,6 @@ public class AuthService
         }
         catch { return false; }
     }
-
 
     public async Task<bool> SignOutAsync(ClaimsPrincipal user)
     {

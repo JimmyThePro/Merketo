@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Merketo.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230523180950_IdentityAdded")]
-    partial class IdentityAdded
+    [Migration("20230524182925_AddIdentity")]
+    partial class AddIdentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -23,25 +23,25 @@ public class UserSignUpViewModel
     public string? PostalCode { get; set; }
     public string? City { get; set; }
 
-    public static implicit operator IdentityUser(UserSignUpViewModel viewModel)
+    public static implicit operator IdentityUser(UserSignUpViewModel model)
     {
         return new IdentityUser
         {
-            UserName = viewModel.Email,
-            Email = viewModel.Email,
-            PhoneNumber = viewModel.PhoneNumber
+            UserName = model.Email,
+            Email = model.Email,
+            PhoneNumber = model.PhoneNumber
         };
     }
 
-    public static implicit operator UserProfileEntity(UserSignUpViewModel viewModel)
+    public static implicit operator UserProfileEntity(UserSignUpViewModel model)
     {
         return new UserProfileEntity
         {
-            FirstName = viewModel.FirstName,
-            LastName = viewModel.LastName,
-            StreetName = viewModel.StreetName,
-            PostalCode = viewModel.PostalCode,
-            City = viewModel.City
+            FirstName = model.FirstName,
+            LastName = model.LastName,
+            StreetName = model.StreetName,
+            PostalCode = model.PostalCode,
+            City = model.City
         };
     }
 }
