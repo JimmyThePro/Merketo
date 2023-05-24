@@ -2,6 +2,7 @@ using Merketo.Contexts;
 using Merketo.Helpers.Repositories;
 using Merketo.Helpers.Services;
 using Merketo.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,15 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configura
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
+{
+    x.SignIn.RequireConfirmedAccount = false;
+    x.Password.RequiredLength = 8;
+    x.User.RequireUniqueEmail = false;
+
+})
+    .AddEntityFrameworkStores<IdentityContext>();
 
 var app = builder.Build();
 app.UseHsts();

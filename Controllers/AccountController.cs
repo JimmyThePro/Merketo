@@ -1,31 +1,60 @@
-﻿using Merketo.Models.ViewModels;
+﻿using Merketo.Helpers.Services;
+using Merketo.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Merketo.Controllers
+namespace Merketo.Controllers;
+
+public class AccountController : Controller
 {
-    public class AccountController : Controller
+    private readonly AuthService _authService;
+
+    public AccountController(AuthService authService)
     {
-        [Authorize]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        _authService = authService;
+    }
 
-        [HttpGet]
-        public IActionResult SignUp()
-        {
-            return View();
-        }
+    [HttpGet]
+    public IActionResult SignUp()
+    {
+        return View();
+    }
 
-        [HttpPost]
-        public IActionResult SignUp(UserSignUpViewModel viewModel)
+    [HttpPost]
+    public async Task<IActionResult> SignUp(UserSignUpViewModel viewModel)
+    {
+        if (ModelState.IsValid)
         {
-            if (ModelState.IsValid)
-            {
+            if (await _authService.SignUpAsync(viewModel))
+                return RedirectToAction("SignIn");
+
+            ModelState.AddModelError("", "A user with that email already exists");
+        }
+        return View(viewModel);
+    }
+
+    [HttpGet]
+    public IActionResult SignIn()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> SignIn(UserSignInViewModel viewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            if (await _authService.SignInAsync(viewModel))
                 return RedirectToAction("Index");
-            }
-            return View(viewModel);
+
+            ModelState.AddModelError("", "Incorrect Email or Password.");
         }
+        return View(viewModel);
+    }
+
+    [Authorize]
+    public IActionResult Index()
+    {
+        return View();
     }
 }
