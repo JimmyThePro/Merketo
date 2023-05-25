@@ -2,17 +2,19 @@
 
 @{ ViewData["Title"] = "Update/Edit product"; }
 
-<section class="container-fluid my-5">
+<section class="container-fluid mt-5">
     <div class="row mt-4 bg-light justify-content-center shadow-sm">
-        <div class="p-2 mt-2 d-flex bd-highlight col-10">
-            <a class="text-dark text-decoration-none me-auto bd-highlight" asp-controller="Account" asp-action="Index">Welcome, @(User.FindFirst("DisplayName")?.Value)!</a>
-            <a class="text-dark text-decoration-none bd-highlight" asp-controller="Account" asp-action="SignOut">Sign Out</a>
+        <div class="p-2 mt-2 d-flex col-10 gap-5">
+            <a class="text-dark text-decoration-none me-auto" asp-controller="Account" asp-action="Index">Admin Superstar - @(User.FindFirst("DisplayName")?.Value)!</a>
+            <a class="text-dark text-decoration-none" asp-controller="AdminProducts" asp-action="Create">Create New Product</a>
+            <a class="text-dark text-decoration-none" asp-controller="AdminProducts" asp-action="Index">All Products</a>
+            <a class="text-dark text-decoration-none" asp-controller="Account" asp-action="SignOut">Sign Out</a>
         </div>
     </div>
 </section>
 <section class="container">
     <div class="d-flex justify-content-center">
-        <form class="col-10 col-xl-6 mb-5" method="post" enctype="multipart/form-data" novalidate asp-controller="AdminProducts" asp-action="Edit">
+        <form class="col-10 col-xl-6 my-5" method="post" enctype="multipart/form-data" novalidate asp-controller="AdminProducts" asp-action="Edit">
             <h3 class="text-center bg-secondary text-white shadow-sm p-2">Update/Edit product</h3>
             <div class="my-3">
                 <label asp-for="ArticleNumber" class="form-label"></label>
