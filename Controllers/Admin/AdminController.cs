@@ -6,7 +6,7 @@ namespace Merketo.Controllers.Admin;
 [Authorize(Roles = "admin")]
 public class AdminController : Controller
 {
-    public IActionResult Index()
+    public IActionResult Index() 
     {
         return View();
     }

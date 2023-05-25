@@ -24,6 +24,8 @@ public class AuthService
         _roleManager = roleManager;
     }
 
+
+
     public async Task<bool> SignUpAsync(UserSignUpViewModel model)
     {
         try
@@ -37,18 +39,20 @@ public class AuthService
             IdentityUser identityUser = model;
             await _userManager.CreateAsync(identityUser, model.Password);
 
-            await _userManager.AddToRoleAsync(identityUser, roleName);
-
             UserProfileEntity userProfileEntity = model;
             userProfileEntity.UserId = identityUser.Id;
 
             _identityContext.UserProfiles.Add(userProfileEntity);
             await _identityContext.SaveChangesAsync();
 
+            await _userManager.AddToRoleAsync(identityUser, roleName);
+
             return true;
         }
         catch { return false; }
     }
+
+
 
     public async Task<bool> SignInAsync(UserSignInViewModel model)
     {
@@ -59,6 +63,7 @@ public class AuthService
         }
         catch { return false; }
     }
+
 
     public async Task<bool> SignOutAsync(ClaimsPrincipal user)
     {

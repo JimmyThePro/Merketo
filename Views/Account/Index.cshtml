@@ -1,1 +1,18 @@
 ﻿@{ ViewData["Title"] = "My Account"; }
+
+<section class="container-fluid my-5">
+    <div class="row mt-4 bg-light justify-content-center shadow-sm">
+        @if (signInManager.IsSignedIn(User))
+        {
+            <div class="p-2 mt-2 d-flex bd-highlight col-10">
+                <a class="text-dark text-decoration-none me-auto bd-highlight" asp-controller="Account" asp-action="Index">Welcome, @(User.FindFirst("DisplayName")?.Value)!</a>
+                @if (User.IsInRole("admin"))
+                {
+                    <a class="text-dark text-decoration-none me-auto bd-highlight" asp-controller="Admin" asp-action="Index">Admin</a>
+                }
+                <a class="text-dark text-decoration-none bd-highlight" asp-controller="Account" asp-action="Index">Account: @User.Identity?.Name</a>
+                <a class="text-dark text-decoration-none bd-highlight ps-5" asp-controller="Account" asp-action="SignOut">Sign Out</a>
+            </div>
+        }
+    </div>
+</section>
