@@ -1,7 +1,11 @@
 ﻿@{ ViewData["Title"] = "Admin - Dashboard"; }
 
-<section class="container mt-5">
-    <div class="d-flex justify-content-center mt-5">
-        <h2>Hello Superstar!</h2>
+<section class="container-fluid my-5">
+    <div class="row mt-4 bg-light justify-content-center shadow-sm">
+        <div class="p-2 mt-2 d-flex bd-highlight col-10">
+            <a class="text-dark text-decoration-none me-auto bd-highlight" asp-controller="Account" asp-action="Index">Hello Superstar!</a>
+            <a class="text-dark text-decoration-none me-auto bd-highlight" asp-controller="AdminProducts" asp-action="Create">Create New Product</a>
+            <a class="text-dark text-decoration-none bd-highlight" asp-controller="Account" asp-action="SignOut">Sign Out</a>
+        </div>
     </div>
 </section>

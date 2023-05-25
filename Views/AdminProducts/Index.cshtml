@@ -2,7 +2,15 @@
 
 @{ ViewData["Title"] = "All Products"; }
 
-<div class="container pt-5 col-10 col-xl-6 my-5">
+<section class="container-fluid my-5">
+    <div class="row mt-4 bg-light justify-content-center shadow-sm">
+        <div class="p-2 mt-2 d-flex bd-highlight col-10">
+            <a class="text-dark text-decoration-none me-auto bd-highlight" asp-controller="Account" asp-action="Index">Hello Superstar!</a>
+            <a class="text-dark text-decoration-none ms-auto bd-highlight" asp-controller="Account" asp-action="SignOut">Sign Out</a>
+        </div>
+    </div>
+</section>
+<section class="container col-10 col-xl-6 mb-5">
     <h2 class="text-center bg-secondary text-white shadow-sm p-2">All Products</h2>
     @foreach (var item in Model)
     {
@@ -23,6 +31,6 @@
         </div>
     }
     <div class="my-3 text-center">
-        <a class="btn-theme d-grid" asp-controller="AdminProducts" asp-action="Create">Create a new product</a>
+        <a class="btn-theme d-grid" asp-controller="AdminProducts" asp-action="Create">CREATE A NEW PRODUCT</a>
     </div>
-</div>
+</section>

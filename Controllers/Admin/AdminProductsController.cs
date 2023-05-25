@@ -1,13 +1,12 @@
-﻿using Merketo.Contexts;
-using Merketo.Helpers.Repositories;
+﻿using Merketo.Helpers.Repositories;
 using Merketo.Helpers.Services;
 using Merketo.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace Merketo.Controllers.Admin;
 
+[Authorize(Roles = "admin")]
 public class AdminProductsController : Controller
 {
     #region constructors & private fields

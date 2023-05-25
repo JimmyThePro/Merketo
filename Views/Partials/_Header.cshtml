@@ -8,10 +8,17 @@
         </nav>
         <nav class="menu-icons">
             <a class="link" asp-controller="Home" asp-action="Index"><i class="fa-regular fa-search"></i></a>
+            @if (signInManager.IsSignedIn(User))
+            {
+                <a class="link text-nowrap" asp-controller="Account" asp-action="Index">My Account</a>
+            }
+            else
+            {
                 <div class="d-flex">
                     <a class="link text-nowrap" asp-controller="Account" asp-action="SignIn">Sign In</a>
                     <a class="link text-nowrap" asp-controller="Account" asp-action="SignUp">Sign Up</a>
                 </div>
+            }
             <a class="link" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-cart-shopping"></i></a>
         </nav>
         <div class="toggle">

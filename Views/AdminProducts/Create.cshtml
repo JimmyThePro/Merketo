@@ -2,11 +2,19 @@
 
 @{ ViewData["Title"] = "Create a new product"; }
 
-<div class="container">
+<section class="container-fluid my-5">
+    <div class="row mt-4 bg-light justify-content-center shadow-sm">
+        <div class="p-2 mt-2 d-flex bd-highlight col-10">
+            <a class="text-dark text-decoration-none me-auto bd-highlight" asp-controller="Account" asp-action="Index">Hello Superstar!</a>
+            <a class="text-dark text-decoration-none bd-highlight" asp-controller="Account" asp-action="SignOut">Sign Out</a>
+        </div>
+    </div>
+</section>
+<section class="container">
     <div class="d-flex justify-content-center">
-        <form class="col-10 col-xl-6 my-5" method="post" enctype="multipart/form-data" novalidate>
-            <h3 class="mt-5 text-center bg-secondary text-white shadow-sm p-2">Create a new product</h3>
-            <div class="mb-3 mt-5">
+        <form class="col-10 col-xl-6 mb-5" method="post" enctype="multipart/form-data" novalidate>
+            <h3 class="text-center bg-secondary text-white shadow-sm p-2">Create a new product</h3>
+            <div class="my-3">
                 <label asp-for="ArticleNumber" class="form-label"></label>
                 <input asp-for="ArticleNumber" onkeyup="validateRequired(event)" autocomplete="none" />
                 <small><span asp-validation-for="ArticleNumber" class="text-danger"></span></small>
@@ -40,4 +48,4 @@
             </div>
         </form>
     </div>
-</div>
+</section>
