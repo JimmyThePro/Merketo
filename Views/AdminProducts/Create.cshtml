@@ -5,7 +5,7 @@
 <section class="container-fluid my-5">
     <div class="row mt-4 bg-light justify-content-center shadow-sm">
         <div class="p-2 mt-2 d-flex bd-highlight col-10">
-            <a class="text-dark text-decoration-none me-auto bd-highlight" asp-controller="Account" asp-action="Index">Hello Superstar!</a>
+            <a class="text-dark text-decoration-none me-auto bd-highlight" asp-controller="Account" asp-action="Index">Welcome, @(User.FindFirst("DisplayName")?.Value)!</a>
             <a class="text-dark text-decoration-none bd-highlight" asp-controller="Account" asp-action="SignOut">Sign Out</a>
         </div>
     </div>
