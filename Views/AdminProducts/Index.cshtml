@@ -13,6 +13,13 @@
     </div>
 </section>
 <section class="container col-10 col-xl-6 my-5">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div id="successAlert" class="alert alert-success alert-dismissible fade show text-center mb-2 pe-2" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
     <h3 class="text-center bg-secondary text-white shadow-sm p-2">All Products</h3>
     @foreach (var item in Model)
     {

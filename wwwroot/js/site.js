@@ -30,3 +30,15 @@ function validateRequired(e) {
     else
         validationfield.innerHTML = e.target.dataset.valRequired
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    var alert = document.querySelector("#successAlert");
+    if (alert) {
+        setTimeout(function () {
+            alert.classList.add("fade");
+            setTimeout(function () {
+                alert.remove();
+            }, 500);
+        }, 4000);
+    }
+});

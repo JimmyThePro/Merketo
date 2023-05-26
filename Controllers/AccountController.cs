@@ -31,7 +31,10 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             if (await _auth.SignUpAsync(model))
+            {
+                TempData["SuccessMessage"] = "Account created successfully!";
                 return RedirectToAction("SignIn");
+            }
 
             ModelState.AddModelError("", "A user with the same email already exists");
         }
@@ -50,7 +53,10 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             if (await _auth.SignInAsync(model))
+            {
+                TempData["SuccessMessage"] = "Login successful!";
                 return RedirectToAction("Index");
+            }
 
             ModelState.AddModelError("", "Incorrect email or password");
         }
@@ -62,7 +68,10 @@ public class AccountController : Controller
     public new async Task<IActionResult> SignOut()
     {
         if (await _auth.SignOutAsync(User))
+        {
+            TempData["SuccessMessage"] = "Logout successful!";
             return LocalRedirect("/");
+        }
 
         return RedirectToAction("Index");
     }

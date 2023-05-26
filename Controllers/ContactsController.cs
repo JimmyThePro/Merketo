@@ -24,6 +24,7 @@ public class ContactsController : Controller
         if (ModelState.IsValid)
         {
             await _formRepository.CreateAsync(viewModel);
+            TempData["SuccessMessage"] = "Message sent successfully!";
             return RedirectToAction("Index");
         }
         return View(viewModel);

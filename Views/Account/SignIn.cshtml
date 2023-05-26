@@ -5,6 +5,15 @@
 <section class="container">
     <div class="d-flex justify-content-center">
         <form method="post" class="col-10 col-xl-6 my-5" novalidate>
+            <div class="mt-5">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div id="successAlert" class="alert alert-success alert-dismissible fade show text-center my-2 pe-2" role="alert">
+                        @TempData["SuccessMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+            </div>
             <h3 class="mt-5 text-center bg-secondary text-white shadow-sm p-2">Sign In to your Account</h3>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3 mt-5">

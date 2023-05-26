@@ -5,7 +5,14 @@
 <section class="container mt-5">
     <div class="d-flex justify-content-center">
         <form class="col-10 col-xl-6 my-5" method="post" enctype="multipart/form-data" novalidate>
-            <h3 class="text-center bg-secondary text-white shadow-sm p-2">Contact Us</h3>
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div id="successAlert" class="alert alert-success alert-dismissible fade show text-center my-2 pe-2" role="alert">
+                    @TempData["SuccessMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            <h3 class="text-center bg-secondary text-white shadow-sm p-2 mb-5">Contact Us</h3>
             <div class="my-3">
                 <label asp-for="Name" class="form-label">Name*</label>
                 <input asp-for="Name" onkeyup="validateRequired(event)" autocomplete="none" />

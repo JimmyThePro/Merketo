@@ -43,8 +43,11 @@ public class AdminProductsController : Controller
         if (ModelState.IsValid)
         {
             var _entity = await _productRepository.CreateAsync(viewModel);
-            if (_entity != null) { }
+            if (_entity != null)
+            {
+                TempData["SuccessMessage"] = "Product created successfully!";
                 return RedirectToAction("Index", "AdminProducts");
+            }
         }
         return View(viewModel);
     }
@@ -81,6 +84,7 @@ public class AdminProductsController : Controller
                 entity.Price = viewModel.Price;
                 entity.Description = viewModel.Description;
                 await _productRepository.UpdateAsync(entity);
+                TempData["SuccessMessage"] = "Product updated successfully!";
                 return RedirectToAction("Index", "AdminProducts");
             }
         }
@@ -94,6 +98,7 @@ public class AdminProductsController : Controller
         var isDeleted = await _productRepository.DeleteAsync(x => x.ArticleNumber == id);
         if (isDeleted)
         {
+            TempData["SuccessMessage"] = "Product deleted successfully!";
             return RedirectToAction("Index", "AdminProducts");
         }
         return RedirectToAction("Index", "AdminProducts");
