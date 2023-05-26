@@ -24,8 +24,6 @@ public class AuthService
         _roleManager = roleManager;
     }
 
-
-
     public async Task<bool> SignUpAsync(UserSignUpViewModel model)
     {
         try
@@ -52,8 +50,6 @@ public class AuthService
         catch { return false; }
     }
 
-
-
     public async Task<bool> SignInAsync(UserSignInViewModel model)
     {
         try
@@ -64,10 +60,13 @@ public class AuthService
         catch { return false; }
     }
 
-
     public async Task<bool> SignOutAsync(ClaimsPrincipal user)
     {
-        await _signInManager.SignOutAsync();
-        return _signInManager.IsSignedIn(user);
+        try
+        {
+            await _signInManager.SignOutAsync();
+            return _signInManager.IsSignedIn(user);
+        }
+        catch { return false; }
     }
 }

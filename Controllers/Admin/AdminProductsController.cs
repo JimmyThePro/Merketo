@@ -43,7 +43,7 @@ public class AdminProductsController : Controller
         if (ModelState.IsValid)
         {
             var _entity = await _productRepository.CreateAsync(viewModel);
-            if (_entity != null)
+            if (_entity != null) { }
                 return RedirectToAction("Index", "AdminProducts");
         }
         return View(viewModel);

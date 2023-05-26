@@ -8,4 +8,5 @@ public class ProductRepository : Repository<ProductEntity>
     public ProductRepository(DataContext context) : base(context)
     {
     }
+
 }

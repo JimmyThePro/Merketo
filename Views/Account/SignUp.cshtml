@@ -8,28 +8,28 @@
             <h3 class="mt-5 text-center bg-secondary text-white shadow-sm p-2">Sign Up for a New Account</h3>
             <div asp-validation-summary="ModelOnly" class="text-danger d-flex justify-content-center mt-5"></div>
             <div class="mb-3 mt-5">
-                <label asp-for="FirstName" class="form-label">First Name</label>
-                <input asp-for="FirstName" class="form-control" autocomplete="none" />
+                <label asp-for="FirstName" class="form-label">First Name*</label>
+                <input asp-for="FirstName" onkeyup="validateRequired(event)" class="form-control" autocomplete="none" />
                 <small class="text-danger"><span asp-validation-for="FirstName"></span></small>
             </div>
             <div class="mb-3">
-                <label asp-for="LastName" class="form-label">Last Name</label>
-                <input asp-for="LastName" class="form-control" autocomplete="none" />
+                <label asp-for="LastName" class="form-label">Last Name*</label>
+                <input asp-for="LastName" onkeyup="validateRequired(event)" class="form-control" autocomplete="none" />
                 <small class="text-danger"><span asp-validation-for="LastName"></span></small>
             </div>
             <div class="mb-3">
-                <label asp-for="Email" class="form-label">Email</label>
-                <input asp-for="Email" class="form-control" autocomplete="none" />
+                <label asp-for="Email" class="form-label">Email*</label>
+                <input asp-for="Email" onkeyup="validateRequired(event)" class="form-control" autocomplete="none" />
                 <small class="text-danger"><span asp-validation-for="Email"></span></small>
             </div>
             <div class="mb-3">
-                <label asp-for="Password" class="form-label">Password</label>
-                <input asp-for="Password" class="form-control" autocomplete="none" />
+                <label asp-for="Password" class="form-label">Password*</label>
+                <input asp-for="Password" onkeyup="validateRequired(event)" class="form-control" autocomplete="none" />
                 <small class="text-danger"><span asp-validation-for="Password"></span></small>
             </div>
             <div class="mb-3">
-                <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
-                <input asp-for="ConfirmPassword" class="form-control" autocomplete="none" />
+                <label asp-for="ConfirmPassword" class="form-label">Confirm Password*</label>
+                <input asp-for="ConfirmPassword" onkeyup="validateRequired(event)" class="form-control" autocomplete="none" />
                 <small class="text-danger"><span asp-validation-for="ConfirmPassword"></span></small>
             </div>
             <div class="mb-3">
