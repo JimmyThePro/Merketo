@@ -14,24 +14,33 @@
             <h5 class="my-5 text-center">All Users in Database:</h5>
 
             <div class="mb-5">
-                @foreach (var user in userManager.Users.ToList().AsEnumerable().Reverse())
+                @if (userManager.Users.Any())
                 {
-                    <div class="card my-2 bg-light">
-                        <div class="card-body text-center">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="card-text">Email: @user.Email</p>
-                                </div>
-                                <div class="col">
-                                    @foreach (var role in userManager.GetRolesAsync(user).Result)
-                                    {
-                                        <div>
-                                            <p class="card-text">Role: @role</p>
-                                        </div>
-                                    }
+                    @foreach (var user in userManager.Users.ToList().AsEnumerable().Reverse())
+                    {
+                        <div class="card my-2 bg-light">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="card-text">Email: @user.Email</p>
+                                    </div>
+                                    <div class="col">
+                                        @foreach (var role in userManager.GetRolesAsync(user).Result)
+                                        {
+                                            <div>
+                                                <p class="card-text">Role: @role</p>
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    }
+                }
+                else
+                {
+                    <div class="d-flex justify-content-center">
+                        <h4 class="text-danger mt-2">No users in the database.</h4>
                     </div>
                 }
             </div>
